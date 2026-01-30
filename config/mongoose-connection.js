@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 // const dbgr = require('debug')("development:mongoose");
-const config = require('config');
 
 mongoose
-.connect(`${config.get('MONGODB_URI')}/bag-shop`)
+.connect(`${process.env.MONGO_URI}/bag-shop`)
 .then(()=>{
     console.log("mongodb connected...")
 })
