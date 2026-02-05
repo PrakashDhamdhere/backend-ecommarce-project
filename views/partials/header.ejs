@@ -10,6 +10,19 @@
 </head>
 
 <body class="font-['helvetica_now_display']">
-    <nav class="w-full fixed top-0 left-0 px-5 py-3">
-        <h3 class="text-xl">Scatch</h3>
-    </nav>
+    <% let loggedin = typeof(loginPage) == "undefined" ? true : false %>
+    <% if(loggedin) {%>
+        <nav class="w-full px-20 py-3 bg-gray-100 flex justify-between">
+            <a href="/shop">
+                <div class="">
+                    <img src="/images/image-removebg-preview (1).png" class="h-10 object-cover" alt="">
+                </div>
+            </a>
+            <div class="flex items-center gap-6">
+                <a class="px-2 py-1 bg-zinc-700 hover:bg-zinc-800 text-zinc-100 font-semibpld rounded-md" href="/shop">Shop <i class="ri-store-3-fill"></i></a>
+                <a class="px-2 py-1 bg-zinc-700 hover:bg-zinc-800 text-zinc-100 font-semibpld rounded-md" href="/cart">Cart <i class="ri-shopping-bag-line"></i></a>
+                <a class="px-2 py-1 bg-zinc-700 hover:bg-zinc-800 text-zinc-100 font-semibpld rounded-md" href="">My Account <i class="ri-user-line"></i></a>
+                <a class="px-2 py-1 bg-red-500 hover:bg-red-600 text-zinc-100 font-semibpld rounded-md" href="/users/logout">Logout <i class="ri-logout-box-line"></i></a>
+            </div>
+        </nav>
+        <% }%>
