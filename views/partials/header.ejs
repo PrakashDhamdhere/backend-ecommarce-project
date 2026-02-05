@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-['helvetica_now_display']">
+<body class="">
     <% let loggedin = typeof(loginPage) == "undefined" ? true : false %>
     <% if(loggedin) {%>
-        <nav class="w-full px-20 py-3 bg-gray-100 flex justify-between">
+        <nav class="w-full px-20 h-[10vh] bg-gray-100 flex justify-between items-center">
             <a href="/shop">
                 <div class="">
                     <img src="/images/image-removebg-preview (1).png" class="h-10 object-cover" alt="">

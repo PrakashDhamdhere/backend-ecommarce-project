@@ -6,8 +6,8 @@
             </span>
         </div>
         <% } %>
-    <div class="w-full h-screen flex items-start px-20 py-20 pr-10 pt-8">
-        <div class="w-[25%] flex h-screen flex-col items-start">
+    <div class="w-full h-[90vh] flex items-start overflow-hidden">
+        <div class="w-[25%] h-[90vh] flex h-screen flex-col items-start px-20 pt-10">
             <div class="flex items-center gap-2">
                 <h3>sort by</h3>
                 <form action="/shop">
@@ -28,8 +28,8 @@
                 <a class="block w-fit mb-2" href="">Discount</a>
             </div>
         </div>
-        <div class="w-[100%] flex flex-col gap-5 h-screen">
-            <div class="flex items-start gap-5 flex-wrap pb-8">
+        <div class="w-[100%] flex flex-col gap-5 h-[90vh]">
+            <div class="h-[90vh] flex items-start gap-5 flex-wrap px-14 py-10 overflow-y-auto">
                 <% products.forEach(function(product){ %>
                     <div class="w-56">
                         <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">

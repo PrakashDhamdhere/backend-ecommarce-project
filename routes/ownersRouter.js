@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const ownerModel = require('../models/owner-model')
+const productModel = require('../models/product-model')
+const generateToken = require('../utils/generateToken');
+const isOwnerLogin = require('../middlewares/isOwnerLogin');
 
 if(process.env.NODE_ENV === "development"){
     router.post("/create", async (req, res)=>{
@@ -22,9 +25,38 @@ if(process.env.NODE_ENV === "development"){
     })
 }
 
-router.get("/admin", (req, res)=>{
+
+router.get("/admin", isOwnerLogin, async (req, res)=>{
+    let products = await productModel.find();
+    let success = req.flash("success")
+    res.render('admin', {products, success})
+})
+
+router.get("/createProducts", isOwnerLogin, (req, res)=>{
     let success = req.flash("success")
     res.render('createproducts', {success})
+})
+
+router.get("/login", (req, res)=>{
+    let error = req.flash("error")
+    res.render('owner-login', {error})
+})
+
+router.post("/login", async (req, res)=>{
+    const {email, password} = req.body
+    const owner = await ownerModel.findOne({email})
+    if(!owner){
+        req.flash("error","Wrong email and password");
+        return res.redirect("/owners/login")
+    }
+    if(owner.password !== password){
+        req.flash("error","Wrong email and password");
+        return res.redirect("/owners/login")
+    }
+    req.flash("success", "Admin Login Successfull")
+    const token = generateToken(owner)
+    res.cookie("token2", token);
+    res.redirect('/owners/admin');
 })
 
 

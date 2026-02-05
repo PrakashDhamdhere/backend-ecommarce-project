@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
     <%if(user.cart.length > 0){%>
-        <div class="w-full h-screen flex items-start px-20 py-20 gap-10">
+        <div class="w-full h-[90vh] flex items-start px-20 py-20 gap-10">
         <div class="w-[30%] flex flex-col gap-4 pb-6">
             <%user.cart.forEach((product)=>{%>
                 <div class="w-fill rounded-md overflow-hidden text-[<%=product.textcolor%>]">
