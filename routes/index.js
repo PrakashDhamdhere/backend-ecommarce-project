@@ -27,7 +27,7 @@ router.get("/removefromcart/:productId", isLoggedIn, async (req, res)=>{
     let user = await userModel.findOne({email: req.user.email})
     user.cart.splice(user.cart.indexOf(req.params.productId),1)
     await user.save()
-    req.flash("success", "Product removed from Cart")
+    // req.flash("success", "Product removed from Cart")
     res.redirect('/cart')
 })
 
@@ -42,9 +42,9 @@ router.get("/cart", isLoggedIn, async (req, res)=>{
     res.render('cart', {user, totalMRP})
 })
 
-router.get("/addtocart/:id", isLoggedIn, async (req, res)=>{
-    let products = await productModel.find();
-    res.render('shop', {products})
-})
+// router.get("/addtocart/:id", isLoggedIn, async (req, res)=>{
+//     let products = await productModel.find();
+//     res.render('shop', {products})
+// })
 
 module.exports = router;
