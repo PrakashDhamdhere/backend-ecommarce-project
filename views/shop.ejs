@@ -1,8 +1,9 @@
 <%- include('./partials/header') %>
 <% if(success.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <div id="flashmsg" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= success %>
+                <button class="text-white font-bold ml-3" onclick="deleteFlash()"><i class="ri-close-line"></i></button>
             </span>
         </div>
         <% } %>
@@ -33,7 +34,7 @@
                 <% products.forEach(function(product){ %>
                     <div class="w-56">
                         <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
-                            <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+                            <img class="w-full h-[12rem] object-contain" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
                                 alt="">
                         </div>
                         <div

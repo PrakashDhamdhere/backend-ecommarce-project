@@ -29,17 +29,18 @@ if(process.env.NODE_ENV === "development"){
 router.get("/admin", isOwnerLogin, async (req, res)=>{
     let products = await productModel.find();
     let success = req.flash("success")
-    res.render('admin', {products, success})
-})
-
-router.get("/createProducts", isOwnerLogin, (req, res)=>{
-    let success = req.flash("success")
-    res.render('createproducts', {success})
+    let error = req.flash("error")
+    res.render('admin', {products, success, error})
 })
 
 router.get("/login", (req, res)=>{
     let error = req.flash("error")
-    res.render('owner-login', {error})
+    res.render('owner-login', {error, loginPage: true})
+})
+
+router.get("/logout", (req, res)=>{
+    res.cookie("token2","")
+    res.redirect('/owners/login')
 })
 
 router.post("/login", async (req, res)=>{
@@ -58,6 +59,18 @@ router.post("/login", async (req, res)=>{
     res.cookie("token2", token);
     res.redirect('/owners/admin');
 })
+
+router.get("/createProducts", isOwnerLogin, (req, res)=>{
+    let success = req.flash("success")
+    res.render('createproducts', {success})
+})
+
+router.get('/deleteProduct/:id', isOwnerLogin, async (req, res)=>{
+    let deletedProduct = await productModel.findOneAndDelete({_id: req.params.id});
+    req.flash("error", `${deletedProduct.name} Deleted`);
+    res.redirect("/owners/admin");
+})
+
 
 
 module.exports = router

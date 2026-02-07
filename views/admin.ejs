@@ -1,9 +1,18 @@
-<%- include('./partials/header') %>
+<%- include('./partials/owner-header') %>
 <% if(success.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-green-500">
+        <div id="flashmsg" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-green-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= success %>
             </span>
+            <button class="text-white font-bold ml-3" onclick="deleteFlash()"><i class="ri-close-line"></i></button>
+        </div>
+        <% } %>
+<% if(error.length>0){ %>
+        <div id="flashmsg" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= error %>
+            </span>
+            <button class="text-white font-bold ml-3" onclick="deleteFlash()"><i class="ri-close-line"></i></button>
         </div>
         <% } %>
     <div class="w-full h-[90vh] flex items-start pl-20 pb-20 overflow-hidden">
@@ -27,8 +36,8 @@
                                 <h3><%=product.name%></h3>
                                 <h4>₹ <%=product.price%></h4>
                             </div>
-                            <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
-                                <i class="ri-add-line"></i>
+                            <a href="/owners/deleteProduct/<%=product._id%>" title="Delete Product" class="w-7 h-7 flex items-center justify-center rounded-full bg-white text-zinc-800">
+                                <i class="ri-delete-bin-5-line"></i>
                             </a>
                         </div>
                     </div>

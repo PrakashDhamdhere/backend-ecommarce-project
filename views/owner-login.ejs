@@ -1,9 +1,10 @@
-<%- include('./partials/header') %>
+<%- include('./partials/owner-header') %>
     <% if(error.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+        <div id="flashmsg" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= error %>
             </span>
+            <button class="text-white font-bold ml-3" onclick="deleteFlash()"><i class="ri-close-line"></i></button>
         </div>
         <% } %>
     <div class="w-full h-[90vh] flex px-20">

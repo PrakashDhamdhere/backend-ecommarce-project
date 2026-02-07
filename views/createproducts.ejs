@@ -1,10 +1,11 @@
-<%- include('./partials/header') %>
+<%- include('./partials/owner-header') %>
 
     <% if(success.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+        <div id="flashmsg" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= success %>
             </span>
+            <button class="text-white font-bold ml-3" onclick="deleteFlash()"><i class="ri-close-line"></i></button>
         </div>
         <% } %>
 
@@ -23,14 +24,14 @@
                                 <h3 class="text-lg font-semibold mb-2">Product Details</h3>
                                 <div class="mb-4">
                                     <label class="block mb-2 font-medium">Product Image</label>
-                                    <input name="image" type="file" class="py-2 px-4 rounded" value="Select File">
+                                    <input required name="image" type="file" class="py-2 px-4 rounded" value="Select File">
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <input name="name" type="text" placeholder="Product Name"
+                                    <input required name="name" type="text" placeholder="Product Name"
                                         class="border p-2 rounded w-full">
-                                    <input name="price" type="text" placeholder="Product Price"
+                                    <input required name="price" type="text" placeholder="Product Price"
                                         class="border p-2 rounded w-full">
-                                    <input name="discount" type="text" placeholder="Discount Price"
+                                    <input required name="discount" type="text" placeholder="Discount Price"
                                         class="border p-2 rounded w-full">
                                 </div>
                             </div>
@@ -38,11 +39,11 @@
                             <div>
                                 <h3 class="text-lg font-semibold mb-2">Panel Details</h3>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <input name="bgcolor" type="text" placeholder="Background Color"
+                                    <input required name="bgcolor" type="text" placeholder="Background Color"
                                         class="border p-2 rounded w-full">
-                                    <input name="panelcolor" type="text" placeholder="Panel Color"
+                                    <input required name="panelcolor" type="text" placeholder="Panel Color"
                                         class="border p-2 rounded w-full">
-                                    <input name="textcolor" type="text" placeholder="Text Color"
+                                    <input required name="textcolor" type="text" placeholder="Text Color"
                                         class="border p-2 rounded w-full">
                                 </div>
                             </div>

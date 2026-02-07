@@ -5,6 +5,9 @@ const productModel = require('../models/product-model')
 const userModel = require('../models/user-model')
 
 router.get("/", (req, res)=>{
+    if(req.cookies.token){
+        return res.redirect('/shop')
+    }
     let error = req.flash("error");
     let success = req.flash("success")
     res.render('index', {error, success, loginPage: false});
@@ -41,10 +44,5 @@ router.get("/cart", isLoggedIn, async (req, res)=>{
     })
     res.render('cart', {user, totalMRP})
 })
-
-// router.get("/addtocart/:id", isLoggedIn, async (req, res)=>{
-//     let products = await productModel.find();
-//     res.render('shop', {products})
-// })
 
 module.exports = router;

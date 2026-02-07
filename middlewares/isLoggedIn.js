@@ -15,7 +15,8 @@ module.exports = async (req, res, next)=>{
         req.user = user;
         next();
     } catch (error) {
-        res.flash("error","something went wrong.")
+        req.flash("error","something went wrong.");
+        res.cookie("token","")
         res.redirect("/")
     }
 }
